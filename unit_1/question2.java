@@ -9,6 +9,7 @@ class Pattern{
             System.out.println("1. Permutation");
             System.out.println("2. Combination");
             System.out.println("3. Pattern");
+            System.out.println("0.Exit");
             System.out.println("Enter your Choice: ");
             ch = s.nextInt();
             switch (ch) {
@@ -47,12 +48,16 @@ class Pattern{
                         n = s.nextInt();
                         pattern(n);
                         break;
+                    case 0:
+                        System.out.println("Exiting the program.!!");
+                        break;  
                     default:
                         System.out.println("Invalid Input");
                         break;
             }
 
         }while(ch!=0);
+        s.close();
 
     }
 
