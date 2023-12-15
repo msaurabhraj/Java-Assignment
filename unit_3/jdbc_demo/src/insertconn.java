@@ -13,21 +13,29 @@ public class insertconn {
         PreparedStatement ps = c.prepareStatement(q);
         ps.setInt(1, 101);
         ps.setString(2, "Saurabh");
-        ps.executeUpdate();
+        ps.addBatch();;
 
         ps.setInt(1, 102);
         ps.setString(2, "Prashant");
-        ps.executeUpdate();
+        ps.addBatch();;
 
         ps.setInt(1, 103);
         ps.setString(2, "Pranav");
-        ps.executeUpdate();
+        ps.addBatch();
 
         ps.setInt(1, 104);
         ps.setString(2, "Abhishek");
+        ps.addBatch();
 
-       int i =  ps.executeUpdate();
-        System.out.println("\n" + i  + " record affected");
+       int[] updateCounts = ps.executeBatch();
+
+       // Count the number of affected records
+       int totalRecords = 0;
+       for (int count : updateCounts) {
+           totalRecords += count;
+       }
+
+        System.out.println("\n" + totalRecords + " record affected");
 
 
 
